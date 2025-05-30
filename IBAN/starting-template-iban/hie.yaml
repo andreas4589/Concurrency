@@ -1,0 +1,10 @@
+cradle:
+  cabal:
+    - path: "src"
+      component: "lib:iban-calculator"
+
+    - path: "app/Main.hs"
+      component: "iban-calculator:exe:iban-calculator"
+
+    - path: "test/Main.hs"
+      component: "iban-calculator:exe:iban-test"

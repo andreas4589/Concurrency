@@ -1,0 +1,50 @@
+cabal-version:  1.12
+name:           iban-calculator
+version:        0.1.0.0
+author:         INFOB3CC lecturers
+license:        BSD3
+license-file:   LICENSE
+build-type:     Simple
+extra-source-files:
+  README.md
+
+library
+  exposed-modules:
+      IBAN
+  hs-source-dirs: src
+  ghc-options: -O2 -Wall
+  build-depends:
+      base >=4.7 && <5
+    , atomic-primops >=0.8.4
+    , bytestring
+    , cryptohash-sha1 >=0.11.101.0
+  default-language: Haskell2010
+
+executable iban-calculator
+  main-is: Main.hs
+  hs-source-dirs: app
+  ghc-options: -O2 -Wall -threaded -with-rtsopts=-n2M -with-rtsopts=-A32M -with-rtsopts=-qa -with-rtsopts=--nonmoving-gc -rtsopts
+  build-depends:
+      base >=4.7 && <5
+    , bytestring
+    , cryptohash-sha1
+    , iban-calculator
+  default-language: Haskell2010
+
+executable iban-test
+  main-is: Main.hs
+  other-modules:
+    BSWriteHandle
+  hs-source-dirs: test
+  ghc-options: -O2 -Wall -threaded -with-rtsopts=-n2M -with-rtsopts=-A32M -with-rtsopts=-qa -with-rtsopts=--nonmoving-gc -rtsopts
+  build-depends:
+      base >=4.7 && <5
+    , bytestring
+    , cryptohash-sha1
+    , deepseq
+    , iban-calculator
+    , megaparsec >=9.5.0
+    , tasty >=1.2.2
+    , tasty-bench >=0.3.2
+    , tasty-hunit
+  default-language: Haskell2010
